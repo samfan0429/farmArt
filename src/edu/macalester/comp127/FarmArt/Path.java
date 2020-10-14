@@ -8,22 +8,23 @@ import edu.macalester.graphics.GraphicsGroup;
 
 import java.awt.Color;
 
-public class Water implements Backgrounds {
+public class Path implements Backgrounds {
     List<Tile> tiles;
     Random r = new Random();
 
     public void apply(TileManager tileManager, Point location, GraphicsGroup background) {
-
+        int num1 = randomInt(100, 200);
+        Color grey = new Color(num1, num1, num1);
         List<Tile> tiles = tileManager.getTiles();
-        for (Tile tile : tiles) { 
+        for (Tile tile : tiles) {
             if (tile.testHit(location.getX(), location.getY())) {
-                tile.changeColor(Color.blue);
+                tile.changeColor(grey);
             }
         }
     }
 
     public String getName() {
-        return "Water";
+        return "Path";
     }
 
     private int randomInt(int min, int max) {
