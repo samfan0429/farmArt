@@ -13,6 +13,7 @@ public class FarmArt {
     private Backgrounds currentBackground;
     private List<Backgrounds> backgroundsList;
     private double y;
+    
 
 
 

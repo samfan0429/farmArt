@@ -12,12 +12,14 @@ public class Water implements Backgrounds {
     List<Tile> tiles;
     Random r = new Random();
 
-    public void apply(TileManager tileManager, Point location, GraphicsGroup background) {
 
+    public void apply(TileManager tileManager, Point location, GraphicsGroup background) {
+        int num1 = randomInt(153, 204);
+        Color blue = new Color(51, num1, 255);
         List<Tile> tiles = tileManager.getTiles();
         for (Tile tile : tiles) { 
             if (tile.testHit(location.getX(), location.getY())) {
-                tile.changeColor(Color.blue);
+                tile.changeColor(blue);
             }
         }
     }
