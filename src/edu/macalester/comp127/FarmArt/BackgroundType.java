@@ -31,9 +31,8 @@ public class BackgroundType {
         return type;
     }
 
-
     private double randomFloat() {
-        return r.nextDouble();
+        return r.nextDouble() + 0.1;
     }
 
 }

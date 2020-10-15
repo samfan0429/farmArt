@@ -38,6 +38,7 @@ public class TileManager {
         for (Tile tile : tiles) { 
             if (tile.testHit(location.getX(), location.getY())) {
                 tile.setFillColor(color);
+                tile.setStrokeColor(color);
             }
         }
     }
@@ -46,7 +47,6 @@ public class TileManager {
         return tiles;
     }
 
-    
 }
 
 

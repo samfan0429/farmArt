@@ -16,24 +16,23 @@ public class FarmArt {
     public FarmArt() {
         canvas = new CanvasWindow("Farm Art!", 2400, 800);
 
-        backgroundsList = List.of(new BackgroundType("dirt", new Color(102, 51, 0), new Color(153, 102, 0)),
-                                  new BackgroundType("water", new Color(51, 204, 255), new Color(51, 153, 255)),
-                                  new BackgroundType("path", new Color(153, 153, 153), new Color(204, 204,204)));
+        backgroundsList = List.of(new BackgroundType("dirt", new Color(90, 50, 0), new Color(120, 60, 0)),
+                                  new BackgroundType("water", new Color(40, 150, 245), new Color(100, 200, 255)),
+                                  new BackgroundType("grass", new Color(50, 200, 0), new Color(150, 230, 0)));
 
-        currentBackground = new BackgroundType("path", new Color(153, 153, 153), new Color(204, 204,204));
+        currentBackground = new BackgroundType("grass", new Color(50, 200, 0), new Color(150, 230, 0));
 
         y = 0;
         for (BackgroundType background : backgroundsList) {
-            y += 20; 
+            y += 30; 
             addBackgroundButton(background, y);
         }
     }
-
+       
     public static void main(String[] args) {
         FarmArt farmArt = new FarmArt();
         farmArt.run();
     }
-
 
     public void run() {
         GraphicsGroup farmGraphics = new GraphicsGroup();
