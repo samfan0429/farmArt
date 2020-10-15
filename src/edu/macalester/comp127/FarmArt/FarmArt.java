@@ -10,8 +10,8 @@ import edu.macalester.graphics.ui.Button;
 
 public class FarmArt {
     private CanvasWindow canvas;
-    private Backgrounds currentBackground;
-    private List<Backgrounds> backgroundsList;
+    private BackgroundType currentBackground;
+    private List<BackgroundType> backgroundsList;
     private double y;
     
 
@@ -23,7 +23,7 @@ public class FarmArt {
         currentBackground = new Path();
 
         y = 0;
-        for (Backgrounds background : backgroundsList) {
+        for (BackgroundType background : backgroundsList) {
             y += 20; 
             addBackgroundButton(background, y);
         }
@@ -37,7 +37,7 @@ public class FarmArt {
 
     public void run() {
         GraphicsGroup farmGraphics = new GraphicsGroup();
-        TileManager tileManager = new TileManager(farmGraphics);
+        TileManager tileManager = new TileManager();
         tileManager.generateGrid(farmGraphics);
         canvas.add(farmGraphics);
 
@@ -53,7 +53,7 @@ public class FarmArt {
 
     
     
-    private void addBackgroundButton(Backgrounds background, double y) {
+    private void addBackgroundButton(BackgroundType background, double y) {
         Button backgroundButton = new Button(background.getName());
         backgroundButton.setPosition(120, y);
         canvas.add(backgroundButton);

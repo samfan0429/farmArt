@@ -8,7 +8,7 @@ import edu.macalester.graphics.GraphicsGroup;
 
 import java.awt.Color;
 
-public class Path implements Backgrounds {
+public class Path implements BackgroundType {
     List<Tile> tiles;
     Random r = new Random();
 

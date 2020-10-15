@@ -4,14 +4,10 @@ import edu.macalester.graphics.Rectangle;
 import java.awt.Color;
 
 public class Tile extends Rectangle{
-    private final static double tileDim = 50;
-    private double x;
-    private double y;
+    
 
-    public Tile(double x, double y) {
-        super(x, y, tileDim, tileDim);
-        this.x = x;
-        this.y = y;
+    public Tile(double x, double y, double size) {
+        super(x, y, size, size);
         this.setFillColor(Color.white);
         this.setStrokeColor(Color.black);
     }

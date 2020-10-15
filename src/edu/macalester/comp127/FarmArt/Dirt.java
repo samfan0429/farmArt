@@ -8,8 +8,7 @@ import edu.macalester.graphics.GraphicsGroup;
 
 import java.awt.Color;
 
-public class Dirt implements Backgrounds{
-    private List<Tile> tiles;
+public class Dirt implements BackgroundType{
     private Random r = new Random();
 
     public void apply(TileManager tileManager, Point location, GraphicsGroup background) {

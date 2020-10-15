@@ -8,10 +8,9 @@ import edu.macalester.graphics.GraphicsGroup;
 
 import java.awt.Color;
 
-public class Water implements Backgrounds {
+public class Water implements BackgroundType {
     List<Tile> tiles;
     Random r = new Random();
-
 
     public void apply(TileManager tileManager, Point location, GraphicsGroup background) {
         int num1 = randomInt(153, 204);

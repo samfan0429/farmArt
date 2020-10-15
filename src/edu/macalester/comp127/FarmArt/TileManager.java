@@ -6,14 +6,12 @@ import java.util.List;
 import edu.macalester.graphics.GraphicsGroup;
 
 public class TileManager {
-    private GraphicsGroup farmGraphics;
     private static List<Tile> tiles;
     private final double NUM_ROWS = 16;
     private final double NUM_COLUMNS = 24;
-    private Tile tile;
+    private final static double TILE_SIZE = 50;
 
-    public TileManager(GraphicsGroup farmGraphics) {
-        this.farmGraphics = farmGraphics;
+    public TileManager() {
         tiles = new ArrayList<>();
     }
 
@@ -25,13 +23,13 @@ public class TileManager {
         double y = 0;
         for (int r = 0; r < NUM_ROWS; r++) {
             for (int c = 0; c < NUM_COLUMNS; c++) {
-                tile = new Tile(x, y);
+                Tile tile = new Tile(x, y, TILE_SIZE);
                 farmGraphics.add(tile);
                 x += tile.getWidth();
                 tiles.add(tile);
             }
             x = 240;
-            y += tile.getWidth();
+            y += TILE_SIZE;
         }
     }
 
