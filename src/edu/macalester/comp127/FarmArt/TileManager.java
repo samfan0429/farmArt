@@ -2,8 +2,9 @@ package edu.macalester.comp127.FarmArt;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import java.awt.Color;
 import edu.macalester.graphics.GraphicsGroup;
+import edu.macalester.graphics.Point;
 
 public class TileManager {
     private static List<Tile> tiles;
@@ -33,9 +34,19 @@ public class TileManager {
         }
     }
 
+    public void colorChange(Point location, Color color) {
+        for (Tile tile : tiles) { 
+            if (tile.testHit(location.getX(), location.getY())) {
+                tile.setFillColor(color);
+            }
+        }
+    }
+
     public List<Tile> getTiles() {
         return tiles;
     }
+
+    
 }
 
 

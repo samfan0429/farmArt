@@ -11,8 +11,4 @@ public class Tile extends Rectangle{
         this.setFillColor(Color.white);
         this.setStrokeColor(Color.black);
     }
-
-    public void changeColor(Color color) {
-        this.setFillColor(color);
-    }
 }
