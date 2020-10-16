@@ -16,9 +16,11 @@ public class FarmArt {
     public FarmArt() {
         canvas = new CanvasWindow("Farm Art!", 2400, 800);
 
-        backgroundsList = List.of(new BackgroundType("dirt", new Color(90, 50, 0), new Color(120, 60, 0)),
-                                  new BackgroundType("water", new Color(40, 150, 245), new Color(100, 200, 255)),
-                                  new BackgroundType("grass", new Color(50, 200, 0), new Color(150, 230, 0)));
+        backgroundsList = List.of(
+            new BackgroundType("eraser", new Color(255, 255, 255), new Color(255, 255, 255)),
+            new BackgroundType("dirt", new Color(90, 50, 0), new Color(120, 60, 0)),      
+            new BackgroundType("water", new Color(40, 150, 245), new Color(100, 200, 245)),
+            new BackgroundType("grass", new Color(50, 200, 0), new Color(150, 230, 0)));
 
         currentBackground = new BackgroundType("grass", new Color(50, 200, 0), new Color(150, 230, 0));
 
@@ -52,7 +54,7 @@ public class FarmArt {
     
     private void addBackgroundButton(BackgroundType background, double y) {
         Button backgroundButton = new Button(background.getName());
-        backgroundButton.setPosition(120, y);
+        backgroundButton.setPosition(100, y);
         canvas.add(backgroundButton);
         backgroundButton.onClick(() -> currentBackground = background);
     }
