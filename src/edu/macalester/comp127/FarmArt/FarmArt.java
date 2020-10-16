@@ -4,25 +4,30 @@ import java.util.List;
 import java.awt.Color;
 import edu.macalester.graphics.CanvasWindow;
 import edu.macalester.graphics.GraphicsGroup;
+import edu.macalester.graphics.Image;
 import edu.macalester.graphics.Point;
 import edu.macalester.graphics.ui.Button;
 
 public class FarmArt {
     private CanvasWindow canvas;
     private BackgroundType currentBackground;
+    private Image currentImage;
     private List<BackgroundType> backgroundsList;
+    private List<Image> imageList;
+    private FarmImages farmImages;
     private double y;
 
     public FarmArt() {
         canvas = new CanvasWindow("Farm Art!", 2400, 800);
 
         backgroundsList = List.of(
-            new BackgroundType("eraser", new Color(255, 255, 255), new Color(255, 255, 255)),
-            new BackgroundType("dirt", new Color(90, 50, 0), new Color(120, 60, 0)),      
-            new BackgroundType("water", new Color(40, 150, 245), new Color(100, 200, 245)),
-            new BackgroundType("grass", new Color(50, 200, 0), new Color(150, 230, 0)));
+        new BackgroundType("dirt", new Color(90, 50, 0), new Color(120, 60, 0)),      
+        new BackgroundType("water", new Color(40, 150, 245), new Color(100, 200, 245)),
+        new BackgroundType("grass", new Color(50, 200, 0), new Color(150, 230, 0)),
+        new BackgroundType("eraser", new Color(255, 255, 255), new Color(255, 255, 255)));
 
-        currentBackground = new BackgroundType("grass", new Color(50, 200, 0), new Color(150, 230, 0));
+        
+        currentBackground = new BackgroundType("eraser", new Color(255, 255, 255), new Color(255, 255, 255));
 
         y = 0;
         for (BackgroundType background : backgroundsList) {
@@ -42,10 +47,18 @@ public class FarmArt {
         tileManager.generateGrid(farmGraphics);
         canvas.add(farmGraphics);
 
-        canvas.onMouseDown(event ->         
-            fill(event.getPosition(), tileManager, farmGraphics)
-        );
+        ElementTileManager elementTileManager = new ElementTileManager();
+        elementTileManager.generateGrid(farmGraphics);
+        canvas.add(farmGraphics);
+
+        canvas.onMouseDown(event ->  {
+            fill(event.getPosition(), tileManager, farmGraphics);
+            // farmImages.addImage(event.getPosition(), new Image("carrot.png"), farmGraphics,
+            //     tileManager);
+        });
         addBackgroundButton(currentBackground, y);
+        
+        farmImages.fillImagesList(canvas);
     }
 
     public void fill(Point location, TileManager tileManager, GraphicsGroup background) {
@@ -59,15 +72,3 @@ public class FarmArt {
         backgroundButton.onClick(() -> currentBackground = background);
     }
 }
-
-
-// int rBrown = randomInt(100, 120);    20
-// int gBrown = randomInt(50, 70); 
-// Color brown = new Color(rBrown, gBrown, 0);
-
-// int rgbGrey = randomInt(100, 200); 100
-// Color grey = new Color(rgbGrey, rgbGrey, rgbGrey);
-
-// int gBlue = randomInt(153, 204);
-// Color blue = new Color(51, gBlue, 255);
-
