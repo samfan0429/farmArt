@@ -2,11 +2,9 @@ package edu.macalester.comp127.FarmArt;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.lang.model.element.Element;
-
 import java.awt.Color;
-import edu.macalester.graphics.GraphicsGroup;
+
+import edu.macalester.graphics.CanvasWindow;
 import edu.macalester.graphics.Point;
 
 public class TileManager {
@@ -19,18 +17,15 @@ public class TileManager {
         tiles = new ArrayList<>();
     }
 
-    /**
-    Generates rows and columns of tiles on the canvas, and adds each individual tiles to the a list.
-     */
-    public void generateGrid(GraphicsGroup farmGraphics) {
+    public void generateGrid(CanvasWindow canvas) {
         double x = 240;
         double y = 0;
         for (int r = 0; r < NUM_ROWS; r++) {
             for (int c = 0; c < NUM_COLUMNS; c++) {
                 Tile tile = new Tile(x, y, TILE_SIZE);
-                farmGraphics.add(tile);
+                canvas.add(tile);
                 x += tile.getWidth();
-                tiles.add(tile);
+                tiles.add(tile);  // for the list
             }
             x = 240;
             y += TILE_SIZE;
@@ -48,9 +43,6 @@ public class TileManager {
     public static List<Tile> getTiles() {
         return tiles;
     }
-
-
-
 }
 
 
