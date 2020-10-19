@@ -1,10 +1,8 @@
 package edu.macalester.comp127.FarmArt;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.awt.Color;
 import edu.macalester.graphics.CanvasWindow;
-import edu.macalester.graphics.GraphicsGroup;
 import edu.macalester.graphics.Image;
 import edu.macalester.graphics.ui.Button;
 

@@ -52,8 +52,31 @@ public class ElementManager {
         Image corn = new Image("corn.png");
         elementImages.add(new ElementType("corn", corn));
 
-        Image pumpkin = new Image("blank.png");
-        elementImages.add(new ElementType("blank", pumpkin));
+        Image carrot = new Image("carrot.png");
+        elementImages.add(new ElementType("carrot", carrot));
+
+        Image tomato = new Image("tomato.png");
+        elementImages.add(new ElementType("tomato", tomato));
+
+        Image cucumber = new Image("cucumber.png");
+        elementImages.add(new ElementType("cucumber", cucumber));
+
+        Image eggplant = new Image("eggplant.png");
+        elementImages.add(new ElementType("eggplant", eggplant));
+
+        Image crab = new Image("crab.png");
+        elementImages.add(new ElementType("crab", crab));
+
+        Image duck = new Image("duck.png");
+        elementImages.add(new ElementType("duck", duck));
+
+        Image fish = new Image("fish.png");
+        elementImages.add(new ElementType("fish", fish));
+
+        Image blank = new Image("blank.png");
+        elementImages.add(new ElementType("blank", blank));
+
+    
         
         return elementImages;
     }
