@@ -1,10 +1,6 @@
 package edu.macalester.comp127.FarmArt;
 
-import java.util.ArrayList;
-import java.util.List;
-import edu.macalester.graphics.CanvasWindow;
 import edu.macalester.graphics.Image;
-import edu.macalester.graphics.Point;
 
 public class ElementType {
     

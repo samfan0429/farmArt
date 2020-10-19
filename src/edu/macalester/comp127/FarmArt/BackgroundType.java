@@ -17,9 +17,9 @@ public class BackgroundType {
     }
     
     public void apply(TileManager tileManager, Point location) {
-        double redRange = randomFloat() * (color1.getRed() - color2.getRed());
-        double greenRange = randomFloat() * (color1.getGreen() - color2.getGreen());
-        double blueRange = randomFloat() * (color1.getBlue() - color2.getBlue());
+        double redRange = randomFloat() * (color2.getRed() - color1.getRed());
+        double greenRange = randomFloat() * (color2.getGreen() - color1.getGreen());
+        double blueRange = randomFloat() * (color2.getBlue() - color1.getBlue());
 
         Color newColor = new Color(
             (int) (color1.getRed() + redRange), 

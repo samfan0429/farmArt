@@ -6,11 +6,8 @@ import java.awt.Color;
 import edu.macalester.graphics.CanvasWindow;
 import edu.macalester.graphics.GraphicsGroup;
 import edu.macalester.graphics.Image;
-import edu.macalester.graphics.Point;
 import edu.macalester.graphics.ui.Button;
 
-import edu.macalester.comp127.FarmArt.ElementType;
-import edu.macalester.comp127.FarmArt.ElementManager;
 
 public class FarmArt {
     private static CanvasWindow canvas;
@@ -18,7 +15,6 @@ public class FarmArt {
     private ElementType currentImage;
     private List<BackgroundType> backgroundsList;
     private List<ElementType> elementImages;
-    private ElementType elementType;
     private double ButtonY;
     private TileManager tileManager;
     private ElementManager elementManager = new ElementManager();
@@ -60,23 +56,11 @@ public class FarmArt {
         tileManager.generateGrid(canvas);
         
         canvas.onMouseDown(event -> {
-            fill(event.getPosition(), tileManager, canvas);
-            select(event.getPosition(), currentImage, canvas);
+            currentBackground.apply(tileManager, event.getPosition());
+            elementManager.selectImage(event.getPosition(), currentImage, canvas, tileManager);
         });
         addBackgroundButton(currentBackground, ButtonY);
-        generateGrid(canvas);
-    }
-    
-    private void generateGrid(CanvasWindow canvas) {
         elementManager.generateBlankGrid(canvas);
-    }
-
-    public void fill(Point location, TileManager tileManager, CanvasWindow canvas) {
-        currentBackground.apply(tileManager, location);
-    }
-
-    public void select(Point location, ElementType image, CanvasWindow canvas) {
-        elementManager.selectImage(location, image, canvas, tileManager);
     }
 
     private void addBackgroundButton(BackgroundType background, double y) {
