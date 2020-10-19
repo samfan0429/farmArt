@@ -1,6 +1,8 @@
 package edu.macalester.comp127.FarmArt;
 
+import edu.macalester.graphics.CanvasWindow;
 import edu.macalester.graphics.Image;
+import edu.macalester.graphics.Point;
 
 public class ElementType {
     
@@ -30,4 +32,11 @@ public class ElementType {
     // public String getType() {
     //     return type;
     // }
+
+    public void selectImage(Tile tile) {
+        Image image1 = new Image(name + ".png");
+        image1.setMaxHeight(50);
+        image1.setMaxWidth(50);
+        tile.setElement(image1);
+    }
 }

@@ -13,16 +13,14 @@ public class ElementManager {
     private static List<Image> images;
     private static final double NUM_ROWS = 16;
     private static final double NUM_COLUMNS = 24;
-    private static double x;
-    private static double y;
 
     public ElementManager() {
         images = new ArrayList<>();
     }
 
     public void generateBlankGrid(CanvasWindow canvas) {
-        x = 240;
-        y = 0;
+        int x = 240;
+        int y = 0;
         for (int r = 0; r < NUM_ROWS; r++) {
             for (int c = 0; c < NUM_COLUMNS; c++) {
                 Image blankImage = new Image(x, y, "blank.png");
@@ -39,9 +37,6 @@ public class ElementManager {
     public List<ElementType> addImages() {
 
         elementImages = new ArrayList<>();
-
-        Image blank = new Image("newBlank.png");
-        elementImages.add(new ElementType("blank", blank));
     
         Image cabbage = new Image("cabbage.png");
         elementImages.add(new ElementType("cabbage", cabbage));
@@ -76,25 +71,13 @@ public class ElementManager {
         Image fish = new Image("fish.png");
         elementImages.add(new ElementType("fish", fish));
 
-    
+        Image blank = new Image("newBlank.png");
+        elementImages.add(new ElementType("blank", blank));
         
         return elementImages;
     }
 
-    public void selectImage(Point location, ElementType image, CanvasWindow canvas, TileManager tileManager) {
-        for (Tile tile : tileManager.getTiles()) { 
-            if (tile.testHit(location.getX(), location.getY())) {
-                if (canvas.getElementAt(location.getX(), location.getY()) instanceof Image) {
-                    canvas.remove(canvas.getElementAt(location.getX(), location.getY()));
-                }
-                    Image image1 = new Image(image.getName() + ".png");
-                    canvas.add(image1);
-                    image1.setPosition(tile.getPosition());
-                    image1.setMaxHeight(50);
-                    image1.setMaxWidth(50);
-            }
-        }
-    }
+   
 
     public List<Image> getImages() {
         return images;

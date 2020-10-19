@@ -9,11 +9,9 @@ import edu.macalester.graphics.ui.Button;
 
 public class FarmArt {
     private static CanvasWindow canvas;
-    private BackgroundType currentBackground;
-    private ElementType currentImage;
+    private Brush currentBrush;
     private List<BackgroundType> backgroundsList;
     private List<ElementType> elementImages;
-    private double ButtonY;
     private TileManager tileManager;
     private ElementManager elementManager = new ElementManager();
 
@@ -21,26 +19,22 @@ public class FarmArt {
         canvas = new CanvasWindow("Farm Art!", 2400, 800);
 
         backgroundsList = List.of(
-            new BackgroundType("eraser", new Color(255, 255, 255), new Color(255, 255, 255)),
+            new BackgroundType("eraser", null, null),
             new BackgroundType("dirt", new Color(90, 50, 0), new Color(120, 60, 0)),
             new BackgroundType("water", new Color(40, 150, 245), new Color(100, 200, 245)),
             new BackgroundType("grass", new Color(50, 200, 0), new Color(150, 230, 0)));
 
-        currentBackground = backgroundsList.get(0);
-        currentImage = new ElementType("blank", new Image("blank.png"));
-
-        ButtonY = 0;
+        double buttonY = 0;
         for (BackgroundType background : backgroundsList) {
-            ButtonY += 30;
-            addBackgroundButton(background, ButtonY);
+            buttonY += 30;
+            addBackgroundButton(background, buttonY);
         }
 
         elementImages = elementManager.addImages();
-        ButtonY = 120;
+        buttonY = 120;
         for (ElementType image : elementImages) {
-            currentImage = image;
-            ButtonY += 30;
-            addElementButton(currentImage, ButtonY);   
+            buttonY += 30;
+            addElementButton(image, buttonY);   
         }
     }
 
@@ -54,8 +48,10 @@ public class FarmArt {
         tileManager.generateGrid(canvas);
         
         canvas.onMouseDown(event -> {
-            currentBackground.apply(tileManager, event.getPosition());
-            elementManager.selectImage(event.getPosition(), currentImage, canvas, tileManager);
+            Tile tile = tileManager.findTileAt(event.getPosition());
+            if (tile != null) {
+                currentBrush.apply(tile);
+            }
         });
         elementManager.generateBlankGrid(canvas);
     }
@@ -64,16 +60,24 @@ public class FarmArt {
         Button backgroundButton = new Button(background.getName());
         backgroundButton.setPosition(100, y);
         canvas.add(backgroundButton);
-        backgroundButton.onClick(() -> currentBackground = background);
-        if (currentBackground.getName() == "eraser") {
-            currentImage = elementImages.get(0);
-        }
+        backgroundButton.onClick(() -> {
+            currentBrush = new BackgroundBrush(background);
+            showSelectedButton(backgroundButton);
+        });
     }
 
-    private void addElementButton(ElementType elementImages, double y) {
-        Button elementButton = new Button(elementImages.getName());
+    private void showSelectedButton() {
+        
+    }
+
+    private void addElementButton(ElementType elementType, double y) {
+        Button elementButton = new Button(elementType.getName());
         elementButton.setPosition(100, y);
         canvas.add(elementButton);
-        elementButton.onClick(() -> currentImage = elementImages);
+        elementButton.onClick(() -> {
+            currentBrush = new ElementBrush(elementType);
+            showSelectedButton(backgroundButton);
+        });
+        
     }
 }

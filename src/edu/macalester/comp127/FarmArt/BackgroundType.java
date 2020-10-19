@@ -16,7 +16,12 @@ public class BackgroundType {
         this.color2 = color2;
     }
     
-    public void apply(TileManager tileManager, Point location) {
+    public void apply(Tile tile) {
+        if (color1 == null || color2 == null) {
+            tile.setBackgroundColor(null);
+            return;
+        }
+
         double redRange = randomFloat() * (color2.getRed() - color1.getRed());
         double greenRange = randomFloat() * (color2.getGreen() - color1.getGreen());
         double blueRange = randomFloat() * (color2.getBlue() - color1.getBlue());
@@ -26,7 +31,7 @@ public class BackgroundType {
             (int) (color1.getGreen() + greenRange), 
             (int) (color1.getBlue() + blueRange));
 
-        tileManager.colorChange(location, newColor);
+        tile.setBackgroundColor(newColor);
     }
 
     public String getName() {

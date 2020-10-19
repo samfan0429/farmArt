@@ -32,12 +32,13 @@ public class TileManager {
         }
     }
 
-    public void colorChange(Point location, Color color) {
+    public Tile findTileAt(Point location) {
         for (Tile tile : tiles) { 
             if (tile.testHit(location.getX(), location.getY())) {
-                tile.setFillColor(color);
+                return tile;
             }
         }
+        return null;
     }
 
     public List<Tile> getTiles() {
