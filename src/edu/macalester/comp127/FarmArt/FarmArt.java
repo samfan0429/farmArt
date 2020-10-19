@@ -26,7 +26,7 @@ public class FarmArt {
             new BackgroundType("water", new Color(40, 150, 245), new Color(100, 200, 245)),
             new BackgroundType("grass", new Color(50, 200, 0), new Color(150, 230, 0)));
 
-        currentBackground = null;
+        currentBackground = backgroundsList.get(0);
         currentImage = new ElementType("blank", new Image("blank.png"));
 
         ButtonY = 0;
@@ -57,7 +57,6 @@ public class FarmArt {
             currentBackground.apply(tileManager, event.getPosition());
             elementManager.selectImage(event.getPosition(), currentImage, canvas, tileManager);
         });
-        addBackgroundButton(currentBackground, ButtonY);
         elementManager.generateBlankGrid(canvas);
     }
 
@@ -66,6 +65,9 @@ public class FarmArt {
         backgroundButton.setPosition(100, y);
         canvas.add(backgroundButton);
         backgroundButton.onClick(() -> currentBackground = background);
+        if (currentBackground.getName() == "eraser") {
+            currentImage = elementImages.get(0);
+        }
     }
 
     private void addElementButton(ElementType elementImages, double y) {

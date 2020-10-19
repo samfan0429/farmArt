@@ -10,4 +10,6 @@ public class Tile extends Rectangle{
         this.setFillColor(Color.white);
         this.setStrokeColor(Color.LIGHT_GRAY);
     }
+
+    
 }

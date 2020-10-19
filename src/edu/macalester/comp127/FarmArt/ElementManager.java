@@ -39,6 +39,9 @@ public class ElementManager {
     public List<ElementType> addImages() {
 
         elementImages = new ArrayList<>();
+
+        Image blank = new Image("newBlank.png");
+        elementImages.add(new ElementType("blank", blank));
     
         Image cabbage = new Image("cabbage.png");
         elementImages.add(new ElementType("cabbage", cabbage));
@@ -73,9 +76,6 @@ public class ElementManager {
         Image fish = new Image("fish.png");
         elementImages.add(new ElementType("fish", fish));
 
-        Image blank = new Image("blank.png");
-        elementImages.add(new ElementType("blank", blank));
-
     
         
         return elementImages;
@@ -84,11 +84,14 @@ public class ElementManager {
     public void selectImage(Point location, ElementType image, CanvasWindow canvas, TileManager tileManager) {
         for (Tile tile : tileManager.getTiles()) { 
             if (tile.testHit(location.getX(), location.getY())) {
-                Image image1 = new Image(image.getName() + ".png");
-                canvas.add(image1);
-                image1.setPosition(tile.getPosition());
-                image1.setMaxHeight(50);
-                image1.setMaxWidth(50);
+                if (canvas.getElementAt(location.getX(), location.getY()) instanceof Image) {
+                    canvas.remove(canvas.getElementAt(location.getX(), location.getY()));
+                }
+                    Image image1 = new Image(image.getName() + ".png");
+                    canvas.add(image1);
+                    image1.setPosition(tile.getPosition());
+                    image1.setMaxHeight(50);
+                    image1.setMaxWidth(50);
             }
         }
     }
