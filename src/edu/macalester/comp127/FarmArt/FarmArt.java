@@ -20,13 +20,7 @@ public class FarmArt {
     public FarmArt() {
         canvas = new CanvasWindow("Farm Art!", 2400, 800);
 
-        // create selectedButtonIndicator rectangle
-        // put it in an instance variable
-        // give it a thick stroke width
-        // make it a happy color or whatever
-        // add it to the canvas *before* the buttons
-        // position it far off the screen
-        selectedButtonIndicator = new Rectangle(-50, -50, 50, 20);
+        selectedButtonIndicator = new Rectangle(-50, -50, 40, 20);
         selectedButtonIndicator.setStroked(false);
         selectedButtonIndicator.setFillColor(Color.blue);
         canvas.add(selectedButtonIndicator);
