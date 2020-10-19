@@ -10,14 +10,18 @@ import edu.macalester.graphics.Point;
 import edu.macalester.graphics.ui.Button;
 
 import edu.macalester.comp127.FarmArt.ElementType;
+import edu.macalester.comp127.FarmArt.ElementManager;
 
 public class FarmArt {
     private static CanvasWindow canvas;
     private BackgroundType currentBackground;
     private ElementType currentImage;
     private List<BackgroundType> backgroundsList;
-    private List<Image> elementImages;
+    private List<ElementType> elementImages;
+    private ElementType elementType;
     private double ButtonY;
+    private TileManager tileManager;
+    private ElementManager elementManager = new ElementManager();
 
     public FarmArt() {
         canvas = new CanvasWindow("Farm Art!", 2400, 800);
@@ -28,7 +32,8 @@ public class FarmArt {
             new BackgroundType("water", new Color(40, 150, 245), new Color(100, 200, 245)),
             new BackgroundType("grass", new Color(50, 200, 0), new Color(150, 230, 0)));
 
-        currentBackground = new BackgroundType("grass", new Color(50, 200, 0), new Color(150, 230, 0));
+        currentBackground = null;
+        currentImage = new ElementType("blank", new Image("blank.png"));
 
         ButtonY = 0;
         for (BackgroundType background : backgroundsList) {
@@ -36,49 +41,42 @@ public class FarmArt {
             addBackgroundButton(background, ButtonY);
         }
 
-        
-
-        // elementImages = ElementType.addImage(canvas);
-        // ButtonY = 120;
-        // for (Image images : elementImages) {
-        //     ButtonY += 30;
-        //     addElementButton(currentImage, ButtonY);
-            
-        // }
+        elementImages = elementManager.addImages();
+        ButtonY = 120;
+        for (ElementType image : elementImages) {
+            currentImage = image;
+            ButtonY += 30;
+            addElementButton(currentImage, ButtonY);   
+        }
     }
 
     public static void main(String[] args) {
         FarmArt farmArt = new FarmArt();
         farmArt.run();
-
-        // Image icon = new Image(240, 0);
-        // icon.setMaxHeight(50);
-        // icon.setMaxWidth(50);
-        // icon.setImagePath("corn.png");
-        // canvas.add(icon);
-
     }
 
     public void run() {    
-        TileManager tileManager = new TileManager();
+        tileManager = new TileManager();
         tileManager.generateGrid(canvas);
-        canvas.onMouseDown(event ->       
-            fill(event.getPosition(), tileManager, canvas)
-        );
+        
+        canvas.onMouseDown(event -> {
+            fill(event.getPosition(), tileManager, canvas);
+            select(event.getPosition(), currentImage, canvas);
+        });
         addBackgroundButton(currentBackground, ButtonY);
         generateGrid(canvas);
     }
     
     private void generateGrid(CanvasWindow canvas) {
-        ElementType.generateBlankGrid(canvas);
+        elementManager.generateBlankGrid(canvas);
     }
 
     public void fill(Point location, TileManager tileManager, CanvasWindow canvas) {
         currentBackground.apply(tileManager, location);
     }
 
-    public void select(Point location, ElementType elementType, CanvasWindow canvas) {
-        currentImage.selectImage(elementType, location);
+    public void select(Point location, ElementType image, CanvasWindow canvas) {
+        elementManager.selectImage(location, image, canvas, tileManager);
     }
 
     private void addBackgroundButton(BackgroundType background, double y) {

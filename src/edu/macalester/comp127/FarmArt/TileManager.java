@@ -40,7 +40,7 @@ public class TileManager {
         }
     }
 
-    public static List<Tile> getTiles() {
+    public List<Tile> getTiles() {
         return tiles;
     }
 }
