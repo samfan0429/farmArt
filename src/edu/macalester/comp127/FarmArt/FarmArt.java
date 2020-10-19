@@ -4,6 +4,7 @@ import java.util.List;
 import java.awt.Color;
 import edu.macalester.graphics.CanvasWindow;
 import edu.macalester.graphics.Image;
+import edu.macalester.graphics.Rectangle;
 import edu.macalester.graphics.ui.Button;
 
 
@@ -14,9 +15,21 @@ public class FarmArt {
     private List<ElementType> elementImages;
     private TileManager tileManager;
     private ElementManager elementManager = new ElementManager();
+    private Rectangle selectedButtonIndicator;
 
     public FarmArt() {
         canvas = new CanvasWindow("Farm Art!", 2400, 800);
+
+        // create selectedButtonIndicator rectangle
+        // put it in an instance variable
+        // give it a thick stroke width
+        // make it a happy color or whatever
+        // add it to the canvas *before* the buttons
+        // position it far off the screen
+        selectedButtonIndicator = new Rectangle(-50, -50, 50, 20);
+        selectedButtonIndicator.setStroked(false);
+        selectedButtonIndicator.setFillColor(Color.blue);
+        canvas.add(selectedButtonIndicator);
 
         backgroundsList = List.of(
             new BackgroundType("eraser", null, null),
@@ -66,8 +79,9 @@ public class FarmArt {
         });
     }
 
-    private void showSelectedButton() {
-        
+    private void showSelectedButton(Button button) {
+        selectedButtonIndicator.setPosition(button.getPosition());
+        selectedButtonIndicator.setSize(button.getSize());
     }
 
     private void addElementButton(ElementType elementType, double y) {
@@ -76,8 +90,7 @@ public class FarmArt {
         canvas.add(elementButton);
         elementButton.onClick(() -> {
             currentBrush = new ElementBrush(elementType);
-            showSelectedButton(backgroundButton);
+            showSelectedButton(elementButton);
         });
-        
     }
 }

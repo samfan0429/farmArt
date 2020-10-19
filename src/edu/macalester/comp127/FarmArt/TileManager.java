@@ -7,7 +7,7 @@ import java.awt.Color;
 import edu.macalester.graphics.CanvasWindow;
 import edu.macalester.graphics.Point;
 
-public class TileManager {
+public class TileManager { // maybe go back to graphic group
     private static List<Tile> tiles;
     private final double NUM_ROWS = 16;
     private final double NUM_COLUMNS = 24;
