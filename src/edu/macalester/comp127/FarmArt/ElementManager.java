@@ -2,7 +2,6 @@ package edu.macalester.comp127.FarmArt;
 
 import java.util.ArrayList;
 import java.util.List;
-import edu.macalester.graphics.GraphicsGroup;
 import edu.macalester.graphics.Image;
 
 public class ElementManager {
@@ -16,18 +15,18 @@ public class ElementManager {
         images = new ArrayList<>();
     }
 
-    public void generateBlankGrid(GraphicsGroup graphicsGroup) {
-        int x = 240;
+    public void generateBlankGrid(TileManager tileManager) {
+        int x = 0;
         int y = 0;
         for (int r = 0; r < NUM_ROWS; r++) {
             for (int c = 0; c < NUM_COLUMNS; c++) {
                 Image blankImage = new Image(x, y, "blank.png");
                 blankImage.setMaxHeight(50);
                 blankImage.setMaxWidth(50);  
-                graphicsGroup.add(blankImage);
+                tileManager.add(blankImage);
                 x += blankImage.getWidth();
             }
-            x = 240;
+            x = 0;
             y += 50;
         }
     }
@@ -38,59 +37,59 @@ public class ElementManager {
     
         // ---------------- vegetable -------------------
         Image cabbage = new Image("cabbage.png");
-        elementImages.add(new ElementType("cabbage", cabbage));
+        elementImages.add(new ElementType("cabbage", cabbage, "dirt"));
 
         Image potato = new Image("potato.png");
-        elementImages.add(new ElementType("potato", potato));
+        elementImages.add(new ElementType("potato", potato, "dirt"));
 
         Image cauliflower = new Image("cauliflower.png");
-        elementImages.add(new ElementType("cauliflower", cauliflower));
+        elementImages.add(new ElementType("cauliflower", cauliflower, "dirt"));
 
         Image corn = new Image("corn.png");
-        elementImages.add(new ElementType("corn", corn));
+        elementImages.add(new ElementType("corn", corn, "dirt"));
 
         Image carrot = new Image("carrot.png");
-        elementImages.add(new ElementType("carrot", carrot));
+        elementImages.add(new ElementType("carrot", carrot, "dirt"));
 
         Image tomato = new Image("tomato.png");
-        elementImages.add(new ElementType("tomato", tomato));
+        elementImages.add(new ElementType("tomato", tomato, "dirt"));
 
         Image cucumber = new Image("cucumber.png");
-        elementImages.add(new ElementType("cucumber", cucumber));
+        elementImages.add(new ElementType("cucumber", cucumber, "dirt"));
 
         Image eggplant = new Image("eggplant.png");
-        elementImages.add(new ElementType("eggplant", eggplant));
+        elementImages.add(new ElementType("eggplant", eggplant, "dirt"));
 
         Image onion = new Image("onion.png");
-        elementImages.add(new ElementType("onion", onion));
+        elementImages.add(new ElementType("onion", onion, "dirt"));
 
         // ---------------- animal -------------------
 
         Image rooster = new Image("rooster.png");
-        elementImages.add(new ElementType("rooster", rooster));
+        elementImages.add(new ElementType("rooster", rooster, "grass"));
 
         Image goat = new Image("goat.png");
-        elementImages.add(new ElementType("goat", goat));
+        elementImages.add(new ElementType("goat", goat, "grass"));
 
         Image pig = new Image("pig.png");
-        elementImages.add(new ElementType("pig", pig));
+        elementImages.add(new ElementType("pig", pig, "grass"));
 
         Image cow = new Image("cow.png");
-        elementImages.add(new ElementType("cow", cow));
+        elementImages.add(new ElementType("cow", cow, "grass"));
 
         Image duck = new Image("duck.png");
-        elementImages.add(new ElementType("duck", duck));
+        elementImages.add(new ElementType("duck", duck, "water"));
 
         Image crab = new Image("crab.png");
-        elementImages.add(new ElementType("crab", crab));
+        elementImages.add(new ElementType("crab", crab, "water"));
 
         Image fish = new Image("fish.png");
-        elementImages.add(new ElementType("fish", fish));
+        elementImages.add(new ElementType("fish", fish, "water"));
 
         // ---------------- blank -------------------
 
         Image blank = new Image("newBlank.png");
-        elementImages.add(new ElementType("blank", blank));
+        elementImages.add(new ElementType("blank", blank, "all"));
         
         return elementImages;
     }

@@ -17,7 +17,7 @@ public class BackgroundType {
     
     public void apply(Tile tile) {
         if (color1 == null || color2 == null) {
-            tile.setBackgroundColor(null);
+            tile.setBackgroundColor(null, null);
             return;
         }
 
@@ -30,7 +30,7 @@ public class BackgroundType {
             (int) (color1.getGreen() + greenRange), 
             (int) (color1.getBlue() + blueRange));
 
-        tile.setBackgroundColor(newColor);
+        tile.setBackgroundColor(newColor, this);
     }
 
     public String getName() {
