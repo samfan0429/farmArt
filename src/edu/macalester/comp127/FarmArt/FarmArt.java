@@ -3,13 +3,14 @@ package edu.macalester.comp127.FarmArt;
 import java.util.List;
 import java.awt.Color;
 import edu.macalester.graphics.CanvasWindow;
-import edu.macalester.graphics.Image;
 import edu.macalester.graphics.Rectangle;
 import edu.macalester.graphics.ui.Button;
+import edu.macalester.graphics.GraphicsGroup;
 
 
 public class FarmArt {
     private static CanvasWindow canvas;
+    private static GraphicsGroup map;
     private Brush currentBrush;
     private List<BackgroundType> backgroundsList;
     private List<ElementType> elementImages;
@@ -19,6 +20,9 @@ public class FarmArt {
 
     public FarmArt() {
         canvas = new CanvasWindow("Farm Art!", 2400, 800);
+        map = new GraphicsGroup();
+        canvas.add(map);
+
 
         selectedButtonIndicator = new Rectangle(-50, -50, 40, 20);
         selectedButtonIndicator.setStroked(false);
@@ -28,7 +32,7 @@ public class FarmArt {
         backgroundsList = List.of(
             new BackgroundType("eraser", null, null),
             new BackgroundType("dirt", new Color(90, 50, 0), new Color(120, 60, 0)),
-            new BackgroundType("water", new Color(40, 150, 245), new Color(100, 200, 245)),
+            new BackgroundType("water", new Color(40, 150, 245), new Color(100, 180, 245)),
             new BackgroundType("grass", new Color(50, 200, 0), new Color(150, 230, 0)));
 
         double buttonY = 0;
@@ -52,7 +56,7 @@ public class FarmArt {
 
     public void run() {    
         tileManager = new TileManager();
-        tileManager.generateGrid(canvas);
+        tileManager.generateGrid(map);
         
         canvas.onMouseDown(event -> {
             Tile tile = tileManager.findTileAt(event.getPosition());
@@ -60,7 +64,7 @@ public class FarmArt {
                 currentBrush.apply(tile);
             }
         });
-        elementManager.generateBlankGrid(canvas);
+        elementManager.generateBlankGrid(map);
     }
 
     private void addBackgroundButton(BackgroundType background, double y) {

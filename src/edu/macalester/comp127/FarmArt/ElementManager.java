@@ -2,23 +2,21 @@ package edu.macalester.comp127.FarmArt;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import edu.macalester.graphics.CanvasWindow;
+import edu.macalester.graphics.GraphicsGroup;
 import edu.macalester.graphics.Image;
-import edu.macalester.graphics.Point;
 
 public class ElementManager {
 
     private static List<ElementType> elementImages;
     private static List<Image> images;
-    private static final double NUM_ROWS = 16;
-    private static final double NUM_COLUMNS = 24;
+    public static final double NUM_ROWS = 16;
+    public static final double NUM_COLUMNS = 24;
 
     public ElementManager() {
         images = new ArrayList<>();
     }
 
-    public void generateBlankGrid(CanvasWindow canvas) {
+    public void generateBlankGrid(GraphicsGroup graphicsGroup) {
         int x = 240;
         int y = 0;
         for (int r = 0; r < NUM_ROWS; r++) {
@@ -26,7 +24,7 @@ public class ElementManager {
                 Image blankImage = new Image(x, y, "blank.png");
                 blankImage.setMaxHeight(50);
                 blankImage.setMaxWidth(50);  
-                canvas.add(blankImage);
+                graphicsGroup.add(blankImage);
                 x += blankImage.getWidth();
             }
             x = 240;
