@@ -5,8 +5,6 @@ import java.awt.Color;
 import edu.macalester.graphics.CanvasWindow;
 import edu.macalester.graphics.Rectangle;
 import edu.macalester.graphics.ui.Button;
-import edu.macalester.graphics.GraphicsGroup;
-
 
 public class FarmArt {
     private static CanvasWindow canvas;
@@ -16,7 +14,6 @@ public class FarmArt {
     private TileManager tileManager;
     private ElementManager elementManager = new ElementManager();
     private Rectangle selectedButtonIndicator;
-    // private double animationParameter;
 
     public FarmArt() {
         canvas = new CanvasWindow("Farm Art!", 2400, 800);
@@ -44,6 +41,8 @@ public class FarmArt {
             buttonY += 30;
             addElementButton(image, buttonY);   
         }
+
+        
     }
 
     public static void main(String[] args) {
@@ -55,22 +54,14 @@ public class FarmArt {
         tileManager = new TileManager();
         tileManager.generateGrid();
         canvas.add(tileManager);
+        addZoomButtons();
 
-        
         canvas.onMouseDown(event -> {
             Tile tile = tileManager.findTileAt(event.getPosition());
             if (tile != null) {
                 currentBrush.apply(tile);
             }
         });
-
-        // canvas.onDrag(event -> {
-        //     double action = event.getDelta().getX() / width;
-        //     setAnimationParameter(
-        //         getAnimationParameter() + action);
-        //     animationSpeed = ((action) + animationSpeed)/2;
-        // });
-
         elementManager.generateBlankGrid(tileManager);
     }
 
@@ -99,45 +90,18 @@ public class FarmArt {
         });
     }
 
-    // /**
-    //  * The second parameter passed to all ParametricFunctions this calculator is showing.
-    //  */
-    // public double getAnimationParameter() {
-    //     return animationParameter;
-    // }
-
-    // /**
-    //  * Changes the second parameter passed to all ParametricFunctions in this calculator.
-    //  * Immediately recomputes and redraws all the functions.
-    //  */
-    // public void setAnimationParameter(double animationParameter) {
-    //     this.animationParameter = animationParameter;
-    //     recalculateAll();
-    // }
-
-    // private void recalculateAll() {
-    //     plots.forEach(canvas::recalculate);
-    // }
-
-    // private void recalculate(FunctionPlot plot) {
-    //     plot.recalculate(animationParameter, xmin, xmax, step, this::convertToScreenCoordinates);
-    // }
-
-    // private Point convertToScreenCoordinates(Point equationPoint) {
-    //     return equationPoint.scale(scale, -scale).add(origin);
-    // }
-
-    // private void coordinatesChanged() {
-    //     xaxis.setStartPosition(0, origin.getY());
-    //     xaxis.setEndPosition(canvas.getWidth(), origin.getY());
-    //     yaxis.setStartPosition(origin.getX(), 0);
-    //     yaxis.setEndPosition(origin.getX(), canvas.getHeight());
-
-    //     xmin = convertToEquationCoordinates(Point.ORIGIN).getX();
-    //     xmax = convertToEquationCoordinates(new Point(canvas.getWidth(), 0)).getX();
-    //     step = 2 / scale;
-
-    //     recalculateAll();
-    // }
-
+    private void addZoomButtons() {
+        Button zoomIn = new Button("+");
+        Button zoomOut = new Button("-");
+        Button standard = new Button("standard");
+        zoomIn.setPosition(100, 680);
+        zoomOut.setPosition(100, 710);
+        standard.setPosition(100, 740);
+        canvas.add(zoomIn);
+        canvas.add(zoomOut);
+        canvas.add(standard);
+        zoomIn.onClick(() -> tileManager.scaleUp());
+        zoomOut.onClick(() -> tileManager.scaleDown());
+        standard.onClick(() -> tileManager.scaleNormal());
+    }
 }

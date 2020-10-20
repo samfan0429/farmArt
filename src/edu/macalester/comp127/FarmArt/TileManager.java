@@ -7,14 +7,15 @@ import edu.macalester.graphics.Point;
 
 public class TileManager extends GraphicsGroup { 
     private static List<Tile> tiles;
-    public static final double NUM_ROWS = 16;
-    public static final double NUM_COLUMNS = 24;
-    private final static double TILE_SIZE = 50;
+    public static final double NUM_ROWS = 80;
+    public static final double NUM_COLUMNS = 120;
+    private double tileSize = 50;
     public static final int START_X = 240;
 
     public TileManager() {
         super(START_X, 0);
         tiles = new ArrayList<>();
+        this.setAnchor(0,0);
     }
 
     public void generateGrid() {
@@ -22,19 +23,19 @@ public class TileManager extends GraphicsGroup {
         double y = 0;
         for (int r = 0; r < NUM_ROWS; r++) {
             for (int c = 0; c < NUM_COLUMNS; c++) {
-                Tile tile = new Tile(x, y, TILE_SIZE);
+                Tile tile = new Tile(x, y, tileSize);
                 this.add(tile);
                 x += tile.getWidth();
                 tiles.add(tile); 
             }
             x = 0;
-            y += TILE_SIZE;
+            y += tileSize;
         }
     }
 
     public Tile findTileAt(Point location) {
         for (Tile tile : tiles) { 
-            if (tile.testHit(location.getX() - START_X, location.getY())) {
+            if (tile.testHit((location.getX() - START_X)/this.getScaleX(), location.getY()/this.getScaleY())) {
                 return tile;
             }
         }
@@ -45,23 +46,23 @@ public class TileManager extends GraphicsGroup {
         return tiles;
     }
 
-
-    /**
-     * The second parameter passed to all ParametricFunctions this calculator is showing.
-     */
-    public double getAnimationParameter() {
-        return animationParameter;
+    public void scaleDown() {
+        double scaleX = this.getScaleX();
+        double scaleY = this.getScaleY();
+        if (scaleX > .20001 || scaleY > .20001) {
+            this.setScale(scaleX * .9, scaleY * .9);
+        }
     }
 
-    /**
-     * Changes the second parameter passed to all ParametricFunctions in this calculator.
-     * Immediately recomputes and redraws all the functions.
-     */
-    public void setAnimationParameter(double animationParameter) {
-        this.animationParameter = animationParameter;
-        recalculateAll();
+    public void scaleUp() {
+        double scaleX = this.getScaleX();
+        double scaleY = this.getScaleY();
+        this.setScale(scaleX * 1.1, scaleY * 1.1);
     }
 
+    public void scaleNormal() {
+        this.setScale(1, 1);
+    }
 }
 
 
