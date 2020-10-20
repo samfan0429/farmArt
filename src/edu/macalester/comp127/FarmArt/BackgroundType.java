@@ -1,6 +1,5 @@
 package edu.macalester.comp127.FarmArt;
 
-import edu.macalester.graphics.Point;
 import java.awt.Color;
 import java.util.Random;
 

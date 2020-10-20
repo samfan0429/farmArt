@@ -23,7 +23,7 @@ public class TileManager { // maybe go back to graphic group
                 Tile tile = new Tile(x, y, TILE_SIZE);
                 graphicsGroup.add(tile);
                 x += tile.getWidth();
-                tiles.add(tile);  // for the list
+                tiles.add(tile); 
             }
             x = 240;
             y += TILE_SIZE;

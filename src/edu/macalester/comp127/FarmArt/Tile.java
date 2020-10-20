@@ -6,6 +6,7 @@ import edu.macalester.graphics.Rectangle;
 import java.awt.Color;
 
 public class Tile extends GraphicsGroup{
+    
     private final Rectangle background;
     private Image element;
     

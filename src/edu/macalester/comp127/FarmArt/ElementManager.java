@@ -36,6 +36,7 @@ public class ElementManager {
 
         elementImages = new ArrayList<>();
     
+        // ---------------- vegetable -------------------
         Image cabbage = new Image("cabbage.png");
         elementImages.add(new ElementType("cabbage", cabbage));
 
@@ -60,14 +61,33 @@ public class ElementManager {
         Image eggplant = new Image("eggplant.png");
         elementImages.add(new ElementType("eggplant", eggplant));
 
-        Image crab = new Image("crab.png");
-        elementImages.add(new ElementType("crab", crab));
+        Image onion = new Image("onion.png");
+        elementImages.add(new ElementType("onion", onion));
+
+        // ---------------- animal -------------------
+
+        Image rooster = new Image("rooster.png");
+        elementImages.add(new ElementType("rooster", rooster));
+
+        Image goat = new Image("goat.png");
+        elementImages.add(new ElementType("goat", goat));
+
+        Image pig = new Image("pig.png");
+        elementImages.add(new ElementType("pig", pig));
+
+        Image cow = new Image("cow.png");
+        elementImages.add(new ElementType("cow", cow));
 
         Image duck = new Image("duck.png");
         elementImages.add(new ElementType("duck", duck));
 
+        Image crab = new Image("crab.png");
+        elementImages.add(new ElementType("crab", crab));
+
         Image fish = new Image("fish.png");
         elementImages.add(new ElementType("fish", fish));
+
+        // ---------------- blank -------------------
 
         Image blank = new Image("newBlank.png");
         elementImages.add(new ElementType("blank", blank));
