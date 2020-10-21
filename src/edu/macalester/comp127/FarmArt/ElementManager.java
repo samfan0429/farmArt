@@ -49,6 +49,12 @@ public class ElementManager {
         Image sunflower = new Image("sunflower1.png");
         elementImages.add(new ElementType("sunflower", sunflower, "dirt")); // change to dirt grass later -- just testing
 
+        Image tomato = new Image("pixelTomato.png");
+        elementImages.add(new ElementType("tomato", tomato, "dirt"));
+
+        Image pumpkin = new Image("pixil-frame-0.png");
+        elementImages.add(new ElementType("pumpkin", pumpkin, "dirt"));
+
         // ---------------- animal -------------------
 
 
@@ -58,8 +64,8 @@ public class ElementManager {
         Image tractor = new Image("tractor1.png");
         elementImages.add(new ElementType("tractor", tractor, "dirtgrass"));
 
-        Image blank = new Image("newBlank.png");
-        elementImages.add(new ElementType("blank", blank, "all"));
+        Image newBlank = new Image("newBlank.png");
+        elementImages.add(new ElementType("blank", newBlank, "all"));
         
         return elementImages;
     }
