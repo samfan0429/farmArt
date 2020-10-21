@@ -57,6 +57,8 @@ public class ElementManager {
 
         // ---------------- animal -------------------
 
+        Image pig = new Image("pig.png");
+        elementImages.add(new ElementType("pig", pig, "dirtgrass"));
 
         // ---------------- others + blank -------------------
         
@@ -71,8 +73,6 @@ public class ElementManager {
         
         return elementImages;
     }
-
-   
 
     public List<Image> getImages() {
         return images;

@@ -63,6 +63,10 @@ public class TileManager extends GraphicsGroup {
     public void scaleNormal() {
         this.setScale(1, 1);
     }
+
+    public void dragGraphics(double actionX, double actionY) {
+        this.moveBy(actionX, actionY);
+    }
 }
 
 

@@ -14,6 +14,7 @@ public class FarmArt {
     private TileManager tileManager;
     private ElementManager elementManager = new ElementManager();
     private Rectangle selectedButtonIndicator;
+    private Boolean dragging = false;
 
     public FarmArt() {
         canvas = new CanvasWindow("Farm Art!", 2400, 800);
@@ -54,13 +55,24 @@ public class FarmArt {
         tileManager.generateGrid();
         canvas.add(tileManager);
         addZoomButtons();
+        addDragButton();
 
-        canvas.onMouseDown(event -> {
-            Tile tile = tileManager.findTileAt(event.getPosition());
-            if (tile != null) {
-                currentBrush.apply(tile);
-            }
-        });
+        if (dragging == false) {
+            canvas.onMouseDown(event -> {
+                Tile tile = tileManager.findTileAt(event.getPosition());
+                if (tile != null) {
+                    currentBrush.apply(tile);
+                }
+            });
+        }
+
+        if (dragging == true) {
+            canvas.onDrag(event -> {
+                double actionX = event.getDelta().getX();
+                double actionY = event.getDelta().getY();
+                tileManager.dragGraphics(actionX, actionY);
+            });
+        }    
         elementManager.generateBlankGrid(tileManager);
     }
 
@@ -69,6 +81,7 @@ public class FarmArt {
         backgroundButton.setPosition(120, y);
         canvas.add(backgroundButton);
         backgroundButton.onClick(() -> {
+            dragging = false;
             currentBrush = new BackgroundBrush(background);
             showSelectedButton(backgroundButton);
         });
@@ -84,9 +97,17 @@ public class FarmArt {
         elementButton.setPosition(120, y);
         canvas.add(elementButton);
         elementButton.onClick(() -> {
+            dragging = false;
             currentBrush = new ElementBrush(elementType);
             showSelectedButton(elementButton);
         });
+    }
+
+    private void addDragButton() {
+        Button drag = new Button("drag");
+        drag.setPosition(70, 60);
+        canvas.add(drag);
+        drag.onClick(() -> dragging = true);
     }
 
     private void addZoomButtons() {
