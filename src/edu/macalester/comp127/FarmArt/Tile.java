@@ -30,7 +30,7 @@ public class Tile extends GraphicsGroup{
     }
 
     public void setElement(Image newElement, String elementType) {
-        if (type == elementType || elementType == "all") {
+        if (elementType.contains(type) || elementType == "all") {
             if (element != null) {
                 remove(element);
             }

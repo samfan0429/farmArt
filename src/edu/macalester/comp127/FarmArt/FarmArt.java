@@ -41,8 +41,6 @@ public class FarmArt {
             buttonY += 30;
             addElementButton(image, buttonY);   
         }
-
-        
     }
 
     public static void main(String[] args) {

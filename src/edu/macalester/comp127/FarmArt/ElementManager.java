@@ -35,67 +35,28 @@ public class ElementManager {
 
         elementImages = new ArrayList<>();
     
-        // ---------------- vegetable -------------------
-        Image cabbage = new Image("cabbage.png");
-        elementImages.add(new ElementType("cabbage", cabbage, "dirt"));
+        // ---------------- plants -------------------
 
-        Image potato = new Image("potato.png");
-        elementImages.add(new ElementType("potato", potato, "dirt"));
+        Image corn1 = new Image("corn1.png");
+        elementImages.add(new ElementType("corn1", corn1, "dirt"));
 
-        Image cauliflower = new Image("cauliflower.png");
-        elementImages.add(new ElementType("cauliflower", cauliflower, "dirt"));
-
-        Image corn = new Image("corn1.png");
-        elementImages.add(new ElementType("corn", corn, "dirt"));
-
-        Image carrot = new Image("carrot1.png");
-        elementImages.add(new ElementType("carrot", carrot, "dirt"));
-
-        // Image tomato = new Image("tomato.png");
-        // elementImages.add(new ElementType("tomato", tomato, "dirt"));
-
-        // Image cucumber = new Image("cucumber.png");
-        // elementImages.add(new ElementType("cucumber", cucumber, "dirt"));
-
-        // Image eggplant = new Image("eggplant.png");
-        // elementImages.add(new ElementType("eggplant", eggplant, "dirt"));
-
-        // Image onion = new Image("onion.png");
-        // elementImages.add(new ElementType("onion", onion, "dirt"));
+        Image carrot1 = new Image("carrot1.png");
+        elementImages.add(new ElementType("carrot", carrot1, "dirt"));
 
         Image bush = new Image("bush1.png");
-        elementImages.add(new ElementType("bush", bush, "dirt"));
+        elementImages.add(new ElementType("bush", bush, "dirtGrass"));
 
         Image sunflower = new Image("sunflower1.png");
-        elementImages.add(new ElementType("sunflower", sunflower, "dirt"));
-
-        Image tractor = new Image("tractor1.png");
-        elementImages.add(new ElementType("tractor", tractor, "dirt"));
+        elementImages.add(new ElementType("sunflower", sunflower, "dirt")); // change to dirt grass later -- just testing
 
         // ---------------- animal -------------------
 
-        Image rooster = new Image("rooster.png");
-        elementImages.add(new ElementType("rooster", rooster, "grass"));
 
-        Image goat = new Image("goat.png");
-        elementImages.add(new ElementType("goat", goat, "grass"));
+        // ---------------- others + blank -------------------
 
-        Image pig = new Image("pig.png");
-        elementImages.add(new ElementType("pig", pig, "grass"));
 
-        Image cow = new Image("cow.png");
-        elementImages.add(new ElementType("cow", cow, "grass"));
-
-        Image duck = new Image("duck.png");
-        elementImages.add(new ElementType("duck", duck, "water"));
-
-        Image crab = new Image("crab.png");
-        elementImages.add(new ElementType("crab", crab, "water"));
-
-        Image fish = new Image("fish.png");
-        elementImages.add(new ElementType("fish", fish, "water"));
-
-        // ---------------- blank -------------------
+        Image tractor = new Image("tractor1.png");
+        elementImages.add(new ElementType("tractor", tractor, "dirtgrass"));
 
         Image blank = new Image("newBlank.png");
         elementImages.add(new ElementType("blank", blank, "all"));
