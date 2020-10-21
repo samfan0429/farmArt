@@ -37,35 +37,37 @@ public class ElementManager {
     
         // ---------------- plants -------------------
 
-        Image corn1 = new Image("corn1.png");
-        elementImages.add(new ElementType("corn1", corn1, "dirt"));
+        Image corn = new Image("corn.png");
+        elementImages.add(new ElementType("corn", corn, "dirt"));
 
-        Image carrot1 = new Image("carrot1.png");
-        elementImages.add(new ElementType("carrot", carrot1, "dirt"));
+        Image carrot = new Image("carrot.png");
+        elementImages.add(new ElementType("carrot", carrot, "dirt"));
 
-        Image bush = new Image("bush1.png");
-        elementImages.add(new ElementType("bush", bush, "dirtGrass"));
+        Image bush = new Image("bush.png");
+        elementImages.add(new ElementType("bush", bush, "dirtgrass"));
 
-        Image sunflower = new Image("sunflower1.png");
-        elementImages.add(new ElementType("sunflower", sunflower, "dirt")); // change to dirt grass later -- just testing
+        Image sunflower = new Image("sunflower.png");
+        elementImages.add(new ElementType("sunflower", sunflower, "dirtgrass")); // change to dirt grass later -- just testing
 
-        Image tomato = new Image("pixelTomato.png");
+        Image tomato = new Image("tomato.png");
         elementImages.add(new ElementType("tomato", tomato, "dirt"));
 
-        Image pumpkin = new Image("pixil-frame-0.png");
+        Image pumpkin = new Image("pumpkin.png");
         elementImages.add(new ElementType("pumpkin", pumpkin, "dirt"));
 
         // ---------------- animal -------------------
 
 
         // ---------------- others + blank -------------------
+        
+        Image fence = new Image("fence.png");
+        elementImages.add(new ElementType("fence", fence, "dirtgrass"));
 
-
-        Image tractor = new Image("tractor1.png");
+        Image tractor = new Image("tractor.png");
         elementImages.add(new ElementType("tractor", tractor, "dirtgrass"));
 
-        Image newBlank = new Image("newBlank.png");
-        elementImages.add(new ElementType("blank", newBlank, "all"));
+        Image blank = new Image("blank.png");
+        elementImages.add(new ElementType("blank", blank, "all"));
         
         return elementImages;
     }

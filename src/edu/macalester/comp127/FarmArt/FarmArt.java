@@ -17,6 +17,7 @@ public class FarmArt {
 
     public FarmArt() {
         canvas = new CanvasWindow("Farm Art!", 2400, 800);
+        canvas.setBackground(Color.black);
         
         selectedButtonIndicator = new Rectangle(-50, -50, 40, 20);
         selectedButtonIndicator.setStroked(false);
@@ -29,14 +30,14 @@ public class FarmArt {
             new BackgroundType("water", new Color(40, 150, 245), new Color(100, 180, 245)),
             new BackgroundType("grass", new Color(50, 200, 0), new Color(150, 230, 0)));
 
-        double buttonY = 0;
+        double buttonY = 60;
         for (BackgroundType background : backgroundsList) {
             buttonY += 30;
             addBackgroundButton(background, buttonY);
         }
 
         elementImages = elementManager.addImages();
-        buttonY = 120;
+        buttonY = 180;
         for (ElementType image : elementImages) {
             buttonY += 30;
             addElementButton(image, buttonY);   
@@ -65,7 +66,7 @@ public class FarmArt {
 
     private void addBackgroundButton(BackgroundType background, double y) {
         Button backgroundButton = new Button(background.getName());
-        backgroundButton.setPosition(100, y);
+        backgroundButton.setPosition(120, y);
         canvas.add(backgroundButton);
         backgroundButton.onClick(() -> {
             currentBrush = new BackgroundBrush(background);
@@ -80,7 +81,7 @@ public class FarmArt {
 
     private void addElementButton(ElementType elementType, double y) {
         Button elementButton = new Button(elementType.getName());
-        elementButton.setPosition(100, y);
+        elementButton.setPosition(120, y);
         canvas.add(elementButton);
         elementButton.onClick(() -> {
             currentBrush = new ElementBrush(elementType);
@@ -92,9 +93,9 @@ public class FarmArt {
         Button zoomIn = new Button("+");
         Button zoomOut = new Button("-");
         Button standard = new Button("standard");
-        zoomIn.setPosition(100, 680);
-        zoomOut.setPosition(100, 710);
-        standard.setPosition(100, 740);
+        zoomIn.setPosition(0, 30);
+        zoomOut.setPosition(70, 30);
+        standard.setPosition(140, 30);
         canvas.add(zoomIn);
         canvas.add(zoomOut);
         canvas.add(standard);
