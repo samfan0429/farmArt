@@ -55,10 +55,25 @@ public class ElementManager {
         Image pumpkin = new Image("pumpkin.png");
         elementImages.add(new ElementType("pumpkin", pumpkin, "dirt"));
 
+        Image lillypad = new Image("lillypad.png");
+        elementImages.add(new ElementType("lillypad", lillypad, "water"));
+
         // ---------------- animal -------------------
 
         Image pig = new Image("pig.png");
         elementImages.add(new ElementType("pig", pig, "dirtgrass"));
+
+        Image snake = new Image("snake.png");
+        elementImages.add(new ElementType("snake", snake, "dirtgrass"));
+
+        Image fish = new Image("fish.png");
+        elementImages.add(new ElementType("fish", fish, "water"));
+
+        Image landDuck = new Image("landDuck.png");
+        elementImages.add(new ElementType("landDuck", landDuck, "dirtgrass"));
+
+        Image waterDuck = new Image("waterDuck.png");
+        elementImages.add(new ElementType("waterDuck", waterDuck, "water"));
 
         // ---------------- others + blank -------------------
         
