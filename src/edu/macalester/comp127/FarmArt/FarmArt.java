@@ -57,22 +57,22 @@ public class FarmArt {
         addZoomButtons();
         addDragButton();
 
-        if (dragging == false) {
-            canvas.onMouseDown(event -> {
+        canvas.onMouseDown(event -> {
+            if (dragging == false) {
                 Tile tile = tileManager.findTileAt(event.getPosition());
                 if (tile != null) {
                     currentBrush.apply(tile);
                 }
-            });
-        }
+            }
+        });
 
-        if (dragging == true) {
-            canvas.onDrag(event -> {
+        canvas.onDrag(event -> {
+            if (dragging) {
                 double actionX = event.getDelta().getX();
                 double actionY = event.getDelta().getY();
                 tileManager.dragGraphics(actionX, actionY);
-            });
-        }    
+            }
+        });  
         elementManager.generateBlankGrid(tileManager);
     }
 
