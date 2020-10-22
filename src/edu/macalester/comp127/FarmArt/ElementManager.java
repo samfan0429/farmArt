@@ -58,6 +58,9 @@ public class ElementManager {
         Image lillypad = new Image("lillypad.png");
         elementImages.add(new ElementType("lillypad", lillypad, "water"));
 
+        Image flower = new Image("flower.png");
+        elementImages.add(new ElementType("flower", flower, "dirtgrass"));
+
         // ---------------- animal -------------------
 
         Image pig = new Image("pig.png");
@@ -74,6 +77,9 @@ public class ElementManager {
 
         Image waterDuck = new Image("waterDuck.png");
         elementImages.add(new ElementType("waterDuck", waterDuck, "water"));
+
+        Image chicken = new Image("chicken.png");
+        elementImages.add(new ElementType("chicken", chicken, "dirtgrass"));
 
         // ---------------- others + blank -------------------
         

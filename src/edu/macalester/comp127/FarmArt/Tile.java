@@ -8,7 +8,8 @@ import java.awt.Color;
 public class Tile extends GraphicsGroup{
     
     private final Rectangle background;
-    private Image element;
+    private ElementType currentElement;
+    private Image elementImage;
     private String type;
     
     public Tile(double x, double y, double size) {
@@ -23,20 +24,31 @@ public class Tile extends GraphicsGroup{
             background.setFillColor(Color.white);
             background.setStrokeColor(Color.LIGHT_GRAY);
         } else {
-            background.setFillColor(color);
-            background.setStroked(false);
-            this.type = type.getName();
+            if (currentElement == null || currentElement.getName().contains(type.getName())) {
+                background.setFillColor(color);
+                background.setStroked(false);
+                this.type = type.getName();
+            }
         }
     }
 
-    public void setElement(Image newElement, String elementType) {
-        if (elementType.contains(type) || elementType == "all") {
-            if (element != null) {
-                remove(element);
+    public void setElement(ElementType currentElement) {
+        Image newElement = new Image(currentElement.getName()+ ".png");
+        newElement.setMaxHeight(50);
+        newElement.setMaxWidth(50);
+
+        if (currentElement.getType().contains(type) || currentElement.getType() == "all") {
+            if (elementImage != null) {
+                remove(elementImage);
             }
             newElement.setCenter(background.getCenter());
             add(newElement);
-            element = newElement;
+            this.elementImage = newElement;
+            if (currentElement.getName() == "blank") {
+                this.currentElement = null;
+            } else {
+                this.currentElement = currentElement;
+            }
         }
     }
 }

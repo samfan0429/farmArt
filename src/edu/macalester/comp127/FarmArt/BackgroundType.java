@@ -29,8 +29,9 @@ public class BackgroundType {
             (int) (color1.getRed() + redRange), 
             (int) (color1.getGreen() + greenRange), 
             (int) (color1.getBlue() + blueRange));
-
+    
         tile.setBackgroundColor(newColor, this);
+        
     }
 
     public String getName() {

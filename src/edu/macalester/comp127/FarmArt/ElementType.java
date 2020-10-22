@@ -22,14 +22,11 @@ public class ElementType {
         return image;
     }
 
-    private String getType() {
+    public String getType() {
         return type;
     }
 
     public void selectImage(Tile tile) {
-        Image image1 = new Image(name + ".png");
-        image1.setMaxHeight(50);
-        image1.setMaxWidth(50);
-        tile.setElement(image1, getType());
+        tile.setElement(this);
     }
 }

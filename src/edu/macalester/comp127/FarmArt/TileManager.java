@@ -11,6 +11,8 @@ public class TileManager extends GraphicsGroup {
     public static final double NUM_COLUMNS = 120;
     private double tileSize = 50;
     public static final int START_X = 240;
+    private double offsetX;
+    private double offsetY;
 
     public TileManager() {
         super(START_X, 0);
@@ -35,7 +37,7 @@ public class TileManager extends GraphicsGroup {
 
     public Tile findTileAt(Point location) {
         for (Tile tile : tiles) { 
-            if (tile.testHit((location.getX() - START_X)/this.getScaleX(), location.getY()/this.getScaleY())) {
+            if (tile.testHit(((location.getX() - START_X) - offsetX)/this.getScaleX(), (location.getY() - offsetY)/this.getScaleY())){
                 return tile;
             }
         }
@@ -66,6 +68,8 @@ public class TileManager extends GraphicsGroup {
 
     public void dragGraphics(double actionX, double actionY) {
         this.moveBy(actionX, actionY);
+        this.offsetX += actionX;
+        this.offsetY += actionY;
     }
 }
 
