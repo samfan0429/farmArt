@@ -3,6 +3,7 @@ package edu.macalester.comp127.FarmArt;
 import java.util.List;
 
 import edu.macalester.graphics.CanvasWindow;
+import edu.macalester.graphics.Image;
 import edu.macalester.graphics.Rectangle;
 import edu.macalester.graphics.ui.Button;
  
@@ -58,9 +59,9 @@ public class Menu {
     * @param background
     * @param y
     */
-   private void addBackgroundButton(CanvasWindow canvas, BackgroundType background, double y) {
+   private void addBackgroundButton(CanvasWindow canvas, BackgroundType background, double x, double y) {
        Button backgroundButton = new Button(background.getName());
-       backgroundButton.setPosition(120, y);
+       backgroundButton.setPosition(x, y);
        canvas.add(backgroundButton);
        backgroundButton.onClick(() -> {
            dragging = false;
@@ -75,9 +76,9 @@ public class Menu {
     * @param elementType
     * @param y
     */
-   private void addElementButton(CanvasWindow canvas, ElementType elementType, double y) {
+   private void addElementButton(CanvasWindow canvas, ElementType elementType, double x, double y) {
        Button elementButton = new Button(elementType.getName());
-       elementButton.setPosition(120, y);
+       elementButton.setPosition(x, y);
        canvas.add(elementButton);
        elementButton.onClick(() -> {
            dragging = false;
@@ -129,21 +130,40 @@ public class Menu {
         buttonIndicator.setSize(button.getSize());
     }
 
-    public void orderBackgroundButtons(CanvasWindow canvas, List<BackgroundType> backgroundsList) {
-        double buttonY = 60;
+    private void orderBackgroundButtons(CanvasWindow canvas, List<BackgroundType> backgroundsList) {
+        double buttonY = 80;
+        double buttonX = 40;
+        int count = 0;
         for (BackgroundType background : backgroundsList) {
+            count++;
             buttonY += 30;
-            addBackgroundButton(canvas, background, buttonY);
+            addBackgroundButton(canvas, background, buttonX, buttonY);
+            if (count == 2) {
+                buttonX += 80;
+                buttonY = 80;
+            }
         }
-
-
+        addElementButton(canvas, new ElementType("blank", new Image("blank.png"), "all"), 120, 140);
     }
 
-    public void orderElementButtons(CanvasWindow canvas, List<ElementType> elementsList){
-        double buttonY = 180;
-        for (ElementType image : elementsList) {
-            buttonY += 30;
-            addElementButton(canvas, image, buttonY);   
+    private void orderElementButtons(CanvasWindow canvas, List<ElementType> elementsList){
+        double buttonY = 160;
+        for (ElementType elementType : elementsList) {
+            buttonY += 35;
+            addElementButton(canvas, elementType, 120, buttonY);
+            addIcons(canvas, 50, buttonY, elementType);  
+            
         }   
     }
+
+    private void addIcons(CanvasWindow canvas, double x, double y, ElementType elementType){
+        Image icon = new Image(elementType.getName()+ ".png");
+        canvas.add(icon);
+        icon.setPosition(x, y);
+        icon.setMaxHeight(30);
+        icon.setMaxWidth(30);
+    }
+
+
+
 }

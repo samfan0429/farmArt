@@ -19,7 +19,6 @@ public class FarmArtGame {
     private GraphicsGroup backdrop;
     private Rectangle rectangle;
     private Rectangle selectedButtonIndicator;
-    private Menu menu;
 
     /**
      * Creates canvas, tileManager, button indicator, menu
@@ -30,9 +29,8 @@ public class FarmArtGame {
         
         tileManager = new TileManager();
         selectedButtonIndicator = new Rectangle(-50, -50, 40, 20);
-        List<BackgroundType> backgroundsList = createBackgroundsList();
-        List<ElementType> elementsList = createElementsList();
-        menu = new Menu(canvas, tileManager, selectedButtonIndicator, backgroundsList, elementsList);
+
+        
     }
 
     /**
@@ -57,6 +55,10 @@ public class FarmArtGame {
         backdrop.add(rectangle);
         canvas.add(backdrop); 
 
+        List<BackgroundType> backgroundsList = createBackgroundsList();
+        List<ElementType> elementsList = createElementsList();
+        new Menu(canvas, tileManager, selectedButtonIndicator, backgroundsList, elementsList);
+
 
         selectedButtonIndicator.setStroked(false);
         selectedButtonIndicator.setFillColor(Color.blue);
@@ -69,7 +71,7 @@ public class FarmArtGame {
     * Canvas will close on click.
     */
     private void showRules() {
-        CanvasWindow rulesWindow = new CanvasWindow("Rules of Farm Art", 2000,600); // here or in the constructor? idk
+        CanvasWindow rulesWindow = new CanvasWindow("Rules of Farm Art", 300,600);
         Image rules = new Image("rules.png");
         rulesWindow.add(rules);
     }
@@ -79,7 +81,6 @@ public class FarmArtGame {
     */
     private List<BackgroundType> createBackgroundsList(){
         List<BackgroundType> backgroundsList = List.of(
-            new BackgroundType("eraser", null, null),
             new BackgroundType("dirt", new Color(90, 50, 0), new Color(120, 60, 0)),
             new BackgroundType("water", new Color(40, 150, 245), new Color(100, 180, 245)),
             new BackgroundType("grass", new Color(50, 200, 0), new Color(150, 230, 0)));
@@ -100,23 +101,23 @@ public class FarmArtGame {
         Image carrot = new Image("carrot.png");
         elementImages.add(new ElementType("carrot", carrot, "dirt"));
 
-        Image bush = new Image("bush.png");
-        elementImages.add(new ElementType("bush", bush, "dirtgrass"));
-
-        Image sunflower = new Image("sunflower.png");
-        elementImages.add(new ElementType("sunflower", sunflower, "dirtgrass"));
-
         Image tomato = new Image("tomato.png");
         elementImages.add(new ElementType("tomato", tomato, "dirt"));
 
         Image pumpkin = new Image("pumpkin.png");
         elementImages.add(new ElementType("pumpkin", pumpkin, "dirt"));
 
+        Image sunflower = new Image("sunflower.png");
+        elementImages.add(new ElementType("sunflower", sunflower, "dirtgrass"));
+
         Image lillypad = new Image("lillypad.png");
         elementImages.add(new ElementType("lillypad", lillypad, "water"));
 
         Image flower = new Image("flower.png");
         elementImages.add(new ElementType("flower", flower, "dirtgrass"));
+
+        Image bush = new Image("bush.png");
+        elementImages.add(new ElementType("bush", bush, "dirtgrass"));
 
         // ---------------- animals -------------------
 
@@ -139,15 +140,9 @@ public class FarmArtGame {
         elementImages.add(new ElementType("chicken", chicken, "dirtgrass"));
 
         // ---------------- others + blank -------------------
-        
-        Image fence = new Image("fence.png");
-        elementImages.add(new ElementType("fence", fence, "dirtgrass"));
 
         Image tractor = new Image("tractor.png");
         elementImages.add(new ElementType("tractor", tractor, "dirtgrass"));
-
-        Image blank = new Image("blank.png");
-        elementImages.add(new ElementType("blank", blank, "all"));
         
         return elementImages;
     }
