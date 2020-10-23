@@ -1,5 +1,7 @@
 package edu.macalester.comp127.FarmArt;
- 
+
+import java.util.List;
+
 import edu.macalester.graphics.CanvasWindow;
 import edu.macalester.graphics.Rectangle;
 import edu.macalester.graphics.ui.Button;
@@ -20,16 +22,22 @@ public class Menu {
     * @param tileManager
     * @param buttonIndicator
     */
-   public Menu(CanvasWindow canvas, TileManager tileManager, Rectangle buttonIndicator) {
+    public Menu(CanvasWindow canvas, 
+                TileManager tileManager, 
+                Rectangle buttonIndicator, 
+                List<BackgroundType> backgroundsList, 
+                List<ElementType> elementsList) {
         this.buttonIndicator = buttonIndicator;
         addZoomButtons(canvas, tileManager);
         addDragButton(canvas);
-    
+        orderBackgroundButtons(canvas, backgroundsList);
+        orderElementButtons(canvas, elementsList);
+
 
         canvas.onMouseDown(event -> {
             if (!dragging) {
                 Tile tile = tileManager.findTileAt(event.getPosition());
-                if (tile != null) {
+                if (tile != null && currentBrush != null) {
                     currentBrush.apply(tile);
                 }
             }
@@ -50,7 +58,7 @@ public class Menu {
     * @param background
     * @param y
     */
-   public void addBackgroundButton(CanvasWindow canvas, BackgroundType background, double y) {
+   private void addBackgroundButton(CanvasWindow canvas, BackgroundType background, double y) {
        Button backgroundButton = new Button(background.getName());
        backgroundButton.setPosition(120, y);
        canvas.add(backgroundButton);
@@ -67,7 +75,7 @@ public class Menu {
     * @param elementType
     * @param y
     */
-   public void addElementButton(CanvasWindow canvas, ElementType elementType, double y) {
+   private void addElementButton(CanvasWindow canvas, ElementType elementType, double y) {
        Button elementButton = new Button(elementType.getName());
        elementButton.setPosition(120, y);
        canvas.add(elementButton);
@@ -119,5 +127,23 @@ public class Menu {
     private void showSelectedButton(Button button) {
         buttonIndicator.setPosition(button.getPosition());
         buttonIndicator.setSize(button.getSize());
+    }
+
+    public void orderBackgroundButtons(CanvasWindow canvas, List<BackgroundType> backgroundsList) {
+        double buttonY = 60;
+        for (BackgroundType background : backgroundsList) {
+            buttonY += 30;
+            addBackgroundButton(canvas, background, buttonY);
+        }
+
+
+    }
+
+    public void orderElementButtons(CanvasWindow canvas, List<ElementType> elementsList){
+        double buttonY = 180;
+        for (ElementType image : elementsList) {
+            buttonY += 30;
+            addElementButton(canvas, image, buttonY);   
+        }   
     }
 }

@@ -30,7 +30,9 @@ public class FarmArtGame {
         
         tileManager = new TileManager();
         selectedButtonIndicator = new Rectangle(-50, -50, 40, 20);
-        menu = new Menu(canvas, tileManager, selectedButtonIndicator);
+        List<BackgroundType> backgroundsList = createBackgroundsList();
+        List<ElementType> elementsList = createElementsList();
+        menu = new Menu(canvas, tileManager, selectedButtonIndicator, backgroundsList, elementsList);
     }
 
     /**
@@ -46,21 +48,6 @@ public class FarmArtGame {
      * Run the farmArt game and create bottons and the button indicator
      */
     public void run() { 
-        List<BackgroundType> backgroundsList = createBackgroundsList();
-        List<ElementType> elementsList = createElementsList();
-
-        double buttonY = 60;
-        for (BackgroundType background : backgroundsList) {
-            buttonY += 30;
-            menu.addBackgroundButton(canvas, background, buttonY);
-        }
-
-        buttonY = 180;
-        for (ElementType image : elementsList) {
-            buttonY += 30;
-            menu.addElementButton(canvas, image, buttonY);   
-        }   
-
         tileManager.generateGrid();
         canvas.add(tileManager);
 
@@ -82,12 +69,9 @@ public class FarmArtGame {
     * Canvas will close on click.
     */
     private void showRules() {
-        CanvasWindow rulesWindow = new CanvasWindow("Rules of Farm Art", 300,600); // here or in the constructor? idk
+        CanvasWindow rulesWindow = new CanvasWindow("Rules of Farm Art", 2000,600); // here or in the constructor? idk
         Image rules = new Image("rules.png");
         rulesWindow.add(rules);
-        rulesWindow.draw();
-        rulesWindow.pause(10000);
-        rulesWindow.closeWindow();
     }
 
     /**

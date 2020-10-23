@@ -49,7 +49,9 @@ public class Tile extends GraphicsGroup{
     }
 
     /**
-     * Set the element in a tile and updates the current element 
+     * If there is an existing element on the tile, it is removed.
+     * Then, it sets the element in a tile and updates the current element. 
+     * Checks if background is not null before setting element.
      * @param currentElementType
      */
     public void setElement(ElementType currentElementType) {

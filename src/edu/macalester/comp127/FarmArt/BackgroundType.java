@@ -12,7 +12,7 @@ public class BackgroundType {
     private String type;
     private Color color1;
     private Color color2;
-    private Random r = new Random();
+    private Random random = new Random();
 
     /**
      * creates background type
@@ -61,7 +61,7 @@ public class BackgroundType {
      * convenience method that returns a random double between 0.0 and 1.0
      */
     private double randomDouble() {
-        return r.nextDouble();
+        return random.nextDouble();
     }
 
 }
