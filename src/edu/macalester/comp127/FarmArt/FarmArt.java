@@ -20,7 +20,7 @@ public class FarmArt {
 
     public FarmArt() {
         canvas = new CanvasWindow("Farm Art!", 2400, 800);
-        canvas.setBackground(Color.white);
+        canvas.setBackground(Color.black);
         tileManager = new TileManager();
         selectedButtonIndicator = new Rectangle(-50, -50, 40, 20);
         menu = new Menu(canvas, tileManager, selectedButtonIndicator);
