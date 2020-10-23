@@ -13,7 +13,6 @@ import java.awt.Color;
 public class Tile extends GraphicsGroup{
     
     private final Rectangle background;
-    private ElementType currentElementType;
     private Image elementImage;
     private String type;
     
@@ -68,8 +67,7 @@ public class Tile extends GraphicsGroup{
             }
             newElement.setCenter(background.getCenter());
             add(newElement);
-            this.elementImage = newElement;
-            this.currentElementType = currentElementType; 
+            this.elementImage = newElement; 
         }
     }
 }

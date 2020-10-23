@@ -15,10 +15,6 @@ public class ElementBrush implements Brush{
         this.elementType = elementType;
     }
 
-    /**
-     * Overrides the apply method
-     * @param tile 
-     */
     @Override
     public void apply(Tile tile) {
         elementType.selectImage(tile);

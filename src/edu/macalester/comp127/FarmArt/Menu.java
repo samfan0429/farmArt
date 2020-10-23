@@ -1,7 +1,6 @@
 package edu.macalester.comp127.FarmArt;
 
 import java.util.List;
-
 import edu.macalester.graphics.CanvasWindow;
 import edu.macalester.graphics.Image;
 import edu.macalester.graphics.Rectangle;
@@ -18,10 +17,11 @@ public class Menu {
    private Boolean dragging = false;
  
    /**
-    * Create a menu with its mouse drag and mouse drag 
+    * A menu constructor with mouse drag and mouse down lanbdas
+    * the menu contains the buttons and controls the dragging and brush applications
     * @param canvas
     * @param tileManager
-    * @param buttonIndicator
+    * @param buttonIndicator To indicate user of their current chosen button
     */
     public Menu(CanvasWindow canvas, 
                 TileManager tileManager, 
@@ -57,7 +57,8 @@ public class Menu {
     * Add background button to the canvas with onClick animation
     * @param canvas
     * @param background
-    * @param y
+    * @param x  x position of the background button
+    * @param y  y position of the background button
     */
    private void addBackgroundButton(CanvasWindow canvas, BackgroundType background, double x, double y) {
        Button backgroundButton = new Button(background.getName());
@@ -74,7 +75,8 @@ public class Menu {
     * Add element button to the canvas with onClick animation
     * @param canvas
     * @param elementType
-    * @param y
+    * @param x x position of element button
+    * @param y y position of element button
     */
    private void addElementButton(CanvasWindow canvas, ElementType elementType, double x, double y) {
        Button elementButton = new Button(elementType.getName());
@@ -131,7 +133,7 @@ public class Menu {
     }
 
     /**
-    * Places the background buttons in the correction positions on the canvas.
+    * Places the background buttons in the correct positions on the canvas.
     * It also includes the blank element in the ordering to be presented as a background.
     */
     private void orderBackgroundButtons(CanvasWindow canvas, List<BackgroundType> backgroundsList) {
@@ -159,7 +161,6 @@ public class Menu {
             buttonY += 35;
             addElementButton(canvas, elementType, 120, buttonY);
             addIcons(canvas, 50, buttonY, elementType);  
-            
         }   
     }
 
@@ -167,13 +168,10 @@ public class Menu {
     * Places the images of the element next to the the corresponding element on the canvas.
     */
     private void addIcons(CanvasWindow canvas, double x, double y, ElementType elementType){
-        Image icon = new Image(elementType.getName()+ ".png");
+        Image icon = new Image(elementType.getName() + ".png");
         canvas.add(icon);
         icon.setPosition(x, y);
         icon.setMaxHeight(30);
         icon.setMaxWidth(30);
     }
-
-
-
 }

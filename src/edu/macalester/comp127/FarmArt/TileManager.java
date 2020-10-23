@@ -7,6 +7,8 @@ import edu.macalester.graphics.Point;
 
 /**
 * Manages a graphics group of tiles.
+* finds position of tiles on the graphics group
+* allows user to drag and scale the graphics group
 */
 public class TileManager extends GraphicsGroup { 
     
@@ -28,7 +30,7 @@ public class TileManager extends GraphicsGroup {
     }
 
     /**
-    * Creatse grid of blank tiles on this graphics groups starting from (0,0), extending for the set number of rows and columns.
+    * Creates grid of blank tiles on this graphics groups starting from (0,0), extending for the set number of rows and columns.
     * They are also added to an array of tiles.
     */
     public void generateGrid() {
@@ -99,5 +101,3 @@ public class TileManager extends GraphicsGroup {
         this.offsetY += actionY;
     }
 }
-
-

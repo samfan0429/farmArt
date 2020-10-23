@@ -9,8 +9,10 @@ import edu.macalester.graphics.Image;
 import edu.macalester.graphics.Rectangle;
 
 /**
- * A farm art game that allows user to add elements and change background in their own farm
- * Also allows user to zoom in/out or drag the farm
+ * A farm art game that allows user to change background to water, dirt or grass
+ * also allows user to add elements, including vegetables, aniamls and flowers on top of each background
+ * also allows user to zoom in/out or drag the farm to create as big/small as they wish
+ * the farm art game uses element images made by Ned Mayo, Stefan Gullickson, Jiaying Wu
  */
 public class FarmArtGame {
 
@@ -29,8 +31,6 @@ public class FarmArtGame {
         
         tileManager = new TileManager();
         selectedButtonIndicator = new Rectangle(-50, -50, 40, 20);
-
-        
     }
 
     /**
@@ -43,7 +43,9 @@ public class FarmArtGame {
     }
 
     /** 
-     * Run the farmArt game and create bottons and the button indicator
+     * Run the farmArt game 
+     * creates buttons and the button indicator
+     * creates black rectangle to create a layer above the grid and below the menu
      */
     public void run() { 
         tileManager.generateGrid();
@@ -58,7 +60,6 @@ public class FarmArtGame {
         List<BackgroundType> backgroundsList = createBackgroundsList();
         List<ElementType> elementsList = createElementsList();
         new Menu(canvas, tileManager, selectedButtonIndicator, backgroundsList, elementsList);
-
 
         selectedButtonIndicator.setStroked(false);
         selectedButtonIndicator.setFillColor(Color.blue);
@@ -88,7 +89,7 @@ public class FarmArtGame {
     }
 
     /**
-    * Fills and returns a list with the elements in resources. 
+    * Fills and returns a list of element images in resources. 
     */
     private List<ElementType> createElementsList() {
         List<ElementType> elementImages = new ArrayList<>();
@@ -139,7 +140,7 @@ public class FarmArtGame {
         Image chicken = new Image("chicken.png");
         elementImages.add(new ElementType("chicken", chicken, "dirtgrass"));
 
-        // ---------------- others + blank -------------------
+        // ---------------- others -------------------
 
         Image tractor = new Image("tractor.png");
         elementImages.add(new ElementType("tractor", tractor, "dirtgrass"));

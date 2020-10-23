@@ -1,7 +1,7 @@
 package edu.macalester.comp127.FarmArt;
 
 /**
- * a background brush that implements bruch interface
+ * a background brush that implements brush interface
  */
 public class BackgroundBrush implements Brush{
     private final BackgroundType background;
@@ -14,10 +14,6 @@ public class BackgroundBrush implements Brush{
         this.background = background;
     }
 
-    /**
-     * overrides apply method
-     * @param tile
-     */
     @Override
     public void apply(Tile tile) {
         background.apply(tile);

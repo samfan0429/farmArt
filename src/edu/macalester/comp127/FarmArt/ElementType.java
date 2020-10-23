@@ -4,6 +4,7 @@ import edu.macalester.graphics.Image;
 
 /**
 * Sets up an Element's name, corresponding image, and type.
+* Each element represents each image that can be put on the screen
 */
 public class ElementType {
     
@@ -46,7 +47,7 @@ public class ElementType {
 
     /**
     * Calls setElement with given tile on this ElementType.
-    * @param tile
+    * @param tile 
     */
     public void selectImage(Tile tile) {
         tile.setElement(this);

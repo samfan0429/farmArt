@@ -15,14 +15,14 @@ public class BackgroundType {
     private Random random = new Random();
 
     /**
-     * creates background type
+     * Constructor for BackgroundType
      * @param type
-     * @param color1
-     * @param color2
+     * @param color1 lower color bound
+     * @param color2 upper color bound
      */
     public BackgroundType(String type, Color color1, Color color2) {
         this.type = type;
-        this.color1 = color1;
+        this.color1 = color1; 
         this.color2 = color2;
     }
     
@@ -51,14 +51,14 @@ public class BackgroundType {
     }
 
     /**
-     * gets string name of BackgroundType
+     * Gets string name of BackgroundType
      */
     public String getName() {
         return type;
     }
 
     /**
-     * convenience method that returns a random double between 0.0 and 1.0
+     * Convenience method that returns a random double between 0.0 and 1.0
      */
     private double randomDouble() {
         return random.nextDouble();
