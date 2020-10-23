@@ -130,6 +130,10 @@ public class Menu {
         buttonIndicator.setSize(button.getSize());
     }
 
+    /**
+    * Places the background buttons in the correction positions on the canvas.
+    * It also includes the blank element in the ordering to be presented as a background.
+    */
     private void orderBackgroundButtons(CanvasWindow canvas, List<BackgroundType> backgroundsList) {
         double buttonY = 80;
         double buttonX = 40;
@@ -146,6 +150,9 @@ public class Menu {
         addElementButton(canvas, new ElementType("blank", new Image("blank.png"), "all"), 120, 140);
     }
 
+    /**
+    * Orders the element buttons on the canvas, and calls addIcons to add the corresponding images.
+    */
     private void orderElementButtons(CanvasWindow canvas, List<ElementType> elementsList){
         double buttonY = 160;
         for (ElementType elementType : elementsList) {
@@ -156,6 +163,9 @@ public class Menu {
         }   
     }
 
+    /**
+    * Places the images of the element next to the the corresponding element on the canvas.
+    */
     private void addIcons(CanvasWindow canvas, double x, double y, ElementType elementType){
         Image icon = new Image(elementType.getName()+ ".png");
         canvas.add(icon);
