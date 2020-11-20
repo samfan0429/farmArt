@@ -49,6 +49,11 @@ public class Menu {
                 double actionX = event.getDelta().getX();
                 double actionY = event.getDelta().getY();
                 tileManager.dragGraphics(actionX, actionY);
+            } else{
+                Tile tile = tileManager.findTileAt(event.getPosition());
+                if (tile != null && currentBrush != null) {
+                    currentBrush.apply(tile);
+                }
             }
         });
    }
